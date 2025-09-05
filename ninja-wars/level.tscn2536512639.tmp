@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=4 uid="uid://b4afd3nb8beom"]
+[gd_scene load_steps=13 format=4 uid="uid://b4afd3nb8beom"]
 
 [ext_resource type="Texture2D" uid="uid://dxjjg6xoyuq3k" path="res://Free/Background/Purple.png" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://bxmta1kq7rsft" path="res://Free/Terrain/Terrain (16x16).png" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://ohc4ugo8dexk" path="res://player.tscn" id="3_oi3di"]
+[ext_resource type="Script" uid="uid://ba4pihlwtj3of" path="res://player.gd" id="4_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://b5rkpenaj06ma" path="res://enemy.tscn" id="5_f2txt"]
+[ext_resource type="Script" uid="uid://by25i5ltakb44" path="res://enemy.gd" id="6_1ainy"]
+[ext_resource type="Script" uid="uid://sh2xceurw80i" path="res://enemy2.gd" id="7_n6hdu"]
+[ext_resource type="Script" uid="uid://bq8g1324o0v4e" path="res://enemy3.gd" id="8_km5ld"]
+[ext_resource type="Script" uid="uid://ytudtsijnt0" path="res://enemy4.gd" id="9_i2t4f"]
+[ext_resource type="Script" uid="uid://bcvr1jx38n8bw" path="res://enemy5.gd" id="10_8cye3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oi3di"]
 texture = ExtResource("2_vonw3")
@@ -188,13 +194,44 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAAABMAAAAGAAAAAAAAABQAAAAGAAEAAAABABMAAAAHAAAAAAABABQAAAAHAAEAAAACABMAAAAGAAAAAAACABQAAAAGAAEAAAADABMAAAAHAAAAAAADABQAAAAHAAEAAAAEABMAAAAGAAAAAAAEABQAAAAGAAEAAAAFABMAAAAHAAAAAAAFABQAAAAHAAEAAAAGABMAAAAGAAAAAAAGABQAAAAGAAEAAAAHABMAAAAHAAAAAAAHABQAAAAHAAEAAAAIABMAAAAGAAAAAAAIABQAAAAGAAEAAAAJABMAAAAHAAAAAAAJABQAAAAHAAEAAAAKABMAAAAGAAAAAAAKABQAAAAGAAEAAAALABMAAAAHAAAAAAALABQAAAAHAAEAAAAMABMAAAAGAAAAAAAMABQAAAAGAAEAAAANABMAAAAHAAAAAAANABQAAAAHAAEAAAAOABMAAAAGAAAAAAAOABQAAAAGAAEAAAAPABMAAAAHAAAAAAAPABQAAAAHAAEAAAAQABMAAAAGAAAAAAAQABQAAAAGAAEAAAARABMAAAAHAAAAAAARABQAAAAHAAEAAAASABMAAAAGAAAAAAASABQAAAAGAAEAAAATABMAAAAHAAAAAAATABQAAAAHAAEAAAAUABMAAAAGAAAAAAAUABQAAAAGAAEAAAAVABMAAAAHAAAAAAAVABQAAAAHAAEAAAAWABMAAAAGAAAAAAAWABQAAAAGAAEAAAAXABMAAAAHAAAAAAAXABQAAAAHAAEAAAAYABMAAAAGAAAAAAAYABQAAAAGAAEAAAAZABMAAAAHAAAAAAAZABQAAAAHAAEAAAAaABMAAAAGAAAAAAAaABQAAAAGAAEAAAAbABMAAAAHAAAAAAAbABQAAAAHAAEAAAAcABMAAAAGAAAAAAAcABQAAAAGAAEAAAAdABMAAAAHAAAAAAAdABQAAAAHAAEAAAAeABMAAAAGAAAAAAAeABQAAAAGAAEAAAAfABMAAAAHAAAAAAAfABQAAAAHAAEAAAAgABMAAAAGAAAAAAAgABQAAAAGAAEAAAAhABMAAAAHAAAAAAAhABQAAAAHAAEAAAAiABMAAAAGAAAAAAAiABQAAAAGAAEAAAAjABMAAAAHAAAAAAAjABQAAAAHAAEAAAD+/wAAAAAGAAEAAAD+/wEAAAAGAAIAAAD//wAAAAAHAAEAAAD//wEAAAAHAAIAAAD+/wIAAAAGAAEAAAD+/wMAAAAGAAIAAAD//wIAAAAHAAEAAAD//wMAAAAHAAIAAAD+/wQAAAAGAAEAAAD+/wUAAAAGAAIAAAD//wQAAAAHAAEAAAD//wUAAAAHAAIAAAD+/wYAAAAGAAEAAAD+/wcAAAAGAAIAAAD//wYAAAAHAAEAAAD//wcAAAAHAAIAAAD+/wgAAAAGAAEAAAD+/wkAAAAGAAIAAAD//wgAAAAHAAEAAAD//wkAAAAHAAIAAAD+/woAAAAGAAEAAAD+/wsAAAAGAAIAAAD//woAAAAHAAEAAAD//wsAAAAHAAIAAAD+/wwAAAAGAAEAAAD+/w0AAAAGAAIAAAD//wwAAAAHAAEAAAD//w0AAAAHAAIAAAD+/w4AAAAGAAEAAAD+/w8AAAAGAAIAAAD//w4AAAAHAAEAAAD//w8AAAAHAAIAAAD+/xAAAAAGAAEAAAD+/xEAAAAGAAIAAAD//xAAAAAHAAEAAAD//xEAAAAHAAIAAAD+/xIAAAAGAAEAAAD+/xMAAAAGAAIAAAD//xIAAAAHAAEAAAD//xMAAAAHAAIAAAAkABMAAAAGAAIAAAAlABMAAAAHAAIAAAAkAAoAAAAGAAEAAAAkAAsAAAAGAAIAAAAlAAoAAAAHAAEAAAAlAAsAAAAHAAIAAAAkAAgAAAAGAAEAAAAkAAkAAAAGAAIAAAAlAAgAAAAHAAEAAAAlAAkAAAAHAAIAAAAkAAYAAAAGAAEAAAAkAAcAAAAGAAIAAAAlAAYAAAAHAAEAAAAlAAcAAAAHAAIAAAAkAAQAAAAGAAEAAAAkAAUAAAAGAAIAAAAlAAQAAAAHAAEAAAAlAAUAAAAHAAIAAAAkAAIAAAAGAAEAAAAkAAMAAAAGAAIAAAAlAAIAAAAHAAEAAAAlAAMAAAAHAAIAAAAkAAAAAAAGAAEAAAAkAAEAAAAGAAIAAAAlAAAAAAAHAAEAAAAlAAEAAAAHAAIAAAA=")
 tile_set = SubResource("TileSet_0b4ue")
 
-[node name="Player" parent="." instance=ExtResource("3_oi3di")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_oi3di")]
 texture_filter = 1
-position = Vector2(71, 555)
+position = Vector2(100, 566)
 scale = Vector2(2.5, 2.5)
 collision_mask = 7
+script = ExtResource("4_0b4ue")
 
-[node name="Enemy" parent="." instance=ExtResource("5_f2txt")]
-position = Vector2(1189, 569)
+[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("5_f2txt")]
+position = Vector2(1189, 570)
 scale = Vector2(2.5, 2.5)
+collision_layer = 2
 collision_mask = 5
+script = ExtResource("6_1ainy")
+
+[node name="Enemy2" parent="." groups=["enemy"] instance=ExtResource("5_f2txt")]
+position = Vector2(1189, 491)
+scale = Vector2(2.5, 2.5)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("7_n6hdu")
+
+[node name="Enemy3" parent="." groups=["enemy"] instance=ExtResource("5_f2txt")]
+position = Vector2(1188, 421)
+scale = Vector2(2.5, 2.5)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("8_km5ld")
+
+[node name="Enemy4" parent="." groups=["enemy"] instance=ExtResource("5_f2txt")]
+position = Vector2(1188, 421)
+scale = Vector2(2.5, 2.5)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("9_i2t4f")
+
+[node name="Enemy5" parent="." groups=["enemy"] instance=ExtResource("5_f2txt")]
+position = Vector2(1188, 421)
+scale = Vector2(2.5, 2.5)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("10_8cye3")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://ohc4ugo8dexk"]
+[gd_scene load_steps=34 format=3 uid="uid://ohc4ugo8dexk"]
 
 [ext_resource type="Texture2D" uid="uid://dgcw340drqpcd" path="res://Free/Main Characters/Ninja Frog/Idle (32x32).png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://ba4pihlwtj3of" path="res://player.gd" id="1_sweqy"]
 [ext_resource type="Texture2D" uid="uid://0yytmjbcsj17" path="res://Free/Main Characters/Ninja Frog/Fall (32x32).png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bib8syu8ej7yt" path="res://Free/Main Characters/Ninja Frog/Jump (32x32).png" id="3_sweqy"]
 [ext_resource type="Texture2D" uid="uid://bcpr2lsg8o3fn" path="res://Free/Main Characters/Ninja Frog/Run (32x32).png" id="4_2hs0m"]
@@ -204,9 +205,13 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
-height = 22.0
+height = 24.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
+height = 24.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_sweqy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vonw3")
@@ -214,5 +219,13 @@ animation = &"duck"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 4)
+position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_oi3di")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, 3)
+shape = SubResource("CapsuleShape2D_hqtel")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
