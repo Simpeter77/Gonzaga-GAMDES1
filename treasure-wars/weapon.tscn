@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c50ecah254rux"]
+
+[ext_resource type="Script" uid="uid://pko1hai5y5y4" path="res://weapon.gd" id="1_o2wld"]
+[ext_resource type="Texture2D" uid="uid://3e6vto0vsjyc" path="res://Free/Traps/Spiked Ball/Spiked Ball.png" id="1_swcir"]
+
+[node name="Weapon" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_o2wld")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(14, 1, 19, 6, 24, 5, 23, 10, 28, 15, 22, 19, 23, 23, 18, 22, 15, 27, 11, 23, 6, 23, 6, 18, 1, 14, 6, 11, 5, 5, 10, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(14, 14)
+texture = ExtResource("1_swcir")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
